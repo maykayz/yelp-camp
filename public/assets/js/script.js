@@ -16,7 +16,7 @@ function cancelAlert(){
 }
 
 
-$.notify("Campground Added Successfully!", "success");
+
 
 
 

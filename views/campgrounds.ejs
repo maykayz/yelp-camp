@@ -11,12 +11,17 @@
                           <img class="activator" src="<%=camp.image%>">
                         </div>
                         <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4" style="font-size:20px"><%=camp.name%><i class="material-icons right">more_vert</i></span>
-                          <p><a href="/campgrounds/<%=camp._id%>">Details</a></p>
-                        </div>
+                          <span class="card-title activator grey-text text-darken-4"><%=camp.name%><i class="material-icons right">more_vert</i></span>
+                          <p><a href="/campgrounds/<%=camp._id%>">Details</a>
+                        </div></p>
                         <div class="card-reveal">
-                          <span class="card-title grey-text text-darken-4"><%=camp.name%><i class="material-icons right">close</i></span>
-                          <p><%=camp.desc%></p>
+                          <span class="card-title grey-text text-darken-4"><%=camp.image%><i class="material-icons right">close</i></span>
+                                <% if(camp.desc) {      %>
+                                <p>
+                                <%=get50words(camp.desc)+" ..."%>
+                                <a href="/campgrounds/<%=camp._id%>">Read more</a>
+                                </p>
+                                <% }  %>
                         </div>
                      </div>
                      
@@ -25,5 +30,18 @@
         </div>
 </div>
 <!--END OF CONTANT-->
+
+
+
+
+<% function get50words(str) {   %>
+<%  var arr = str.split(" ");   %>
+<%    var newArr = [];          %>
+<%    for(var i=0;i<50;i++){    %>
+<%        newArr.push(arr[i]);  %>
+<%  }                           %>
+<%  return newArr.join(" ");    %>
+<% }                            %>
+
 
 <% include ./partials/footer %>

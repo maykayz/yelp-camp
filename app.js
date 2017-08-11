@@ -14,8 +14,8 @@ var methodOverride = require("method-override");
 
 //DATABASE SETUP
     //connect mongoose to db
-//    mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
-        mongoose.connect('mongodb://maykhattar:Mkt13468@ds129003.mlab.com:29003/yelpcamp',{useMongoClient:true});
+    mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
+//        mongoose.connect('mongodb://maykhattar:Mkt13468@ds129003.mlab.com:29003/yelpcamp',{useMongoClient:true});
 
     //create schema
     var campgroundSchema = new mongoose.Schema({
