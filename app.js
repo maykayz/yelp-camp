@@ -97,6 +97,6 @@ app.delete("/campgrounds/:id",function(req,res){
 });
 
 //LISTEN
-app.listen(process.env.PORT || 3000),function(){
+app.listen(process.env.PORT || 3000,function(){
     console.log("Yelp Camp has started");
 });
