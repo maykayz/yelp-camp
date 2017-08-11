@@ -1,0 +1,54 @@
+<% include ./partials/header %>
+    <div class="container campgroundContainer">
+      <div class="row">
+        <div class="col xl8 l8 s12 xs12 offset-xl2 offset-l2">
+          <div class="card">
+            <div class="card-image">
+              <img src="<%=campground.image%>">
+              <span class="card-title"><%=campground.name%></span>
+            </div>
+            <div class="card-content">
+              <p><%=campground.desc%></p>
+            </div>
+            <div class="card-action">
+              <a href="/campgrounds/<%=campground._id%>/edit"><i class="edit icon"></i></a>
+              <a onclick="deleteAlert()" href="#endPoint"><i class="trash icon"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+<!-- end point and message-->
+      
+       <div id="endpoint"></div>
+        <!-- Alert message-->
+        <div class="ui hidden message" id="deleteMessage">
+          <div class="ui grid">
+          
+              <div class="ten wide column">
+                <div class="header">
+                    You are deleting the post!
+                  </div>
+                  Are you sure you want to delete this post?
+              </div>
+              <div class="six wide column">
+                  <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                      <button class="ui negative button" type="submit">
+                          Delete
+                      </button>
+                      <a class="ui button" onclick="cancelAlert()">
+                          Cancel
+                      </a>
+                  </form>
+                
+              </div>
+          </div>
+        </div>
+<!-- end of end point -->
+    </div>        
+
+
+<!--CONTENT ENDS HERE-->
+<% include ./partials/footer %>
+
+

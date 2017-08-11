@@ -1,0 +1,46 @@
+
+body{
+    margin: 0 auto;
+
+    min-height: 100vh;
+
+/*    flex-direction: column;*/
+}
+.main{
+    min-height:100vh;
+
+}
+/*
+.main .row .column .card{
+    height:250px;
+}
+*/
+.card-content p{
+/*        flex: 1 0 auto;*/
+}
+.container{
+    height:auto;
+}
+.campgroundContainer{
+    margin-top:50px;
+    margin-bottom:50px;
+}
+nav .brand-logo{
+    font-size:1.5rem;
+}
+nav ul a:hover{
+    color:#004d40;
+}
+ h4:first-child{
+    margin-top:100px;
+    margin-bottom:50px;
+    text-align:center;
+    color:#004d40;
+}
+.landingBody{
+    margin-top:30vh;
+}
+.card-action a i{
+    font-size:1.5em;
+    color:#004d40;
+}
