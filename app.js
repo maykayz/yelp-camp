@@ -58,7 +58,7 @@ app.post("/campgrounds",function(req,res){
         if(err){
             console.log(err);
         }else{
-            res.render("campgrounds",{alert:true});
+            res.redirect("/campgrounds");
             
         }
     });
