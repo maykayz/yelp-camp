@@ -18,7 +18,7 @@ var express         = require("express"),
 
 //DATABASE SETUP
 if(process.env.DATABASEURL) {
-  mongoose.connect(process.env.DATABASEURL);
+  mongoose.connect(process.env.DATABASEURL,{useMongoClient:true});
 } else {
   mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
 }
