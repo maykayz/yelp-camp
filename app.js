@@ -18,9 +18,9 @@ var express         = require("express"),
 
 //DATABASE SETUP
     var url = process.env.DATABASEURL;
-//    var url = process.env.DATABASEURL || 'mongodb://localhost/campDB';
+//    var url = process.env.DATABASEURL || 'mongodb://localhost/campDB' || 'mongodb://localhost/campgroundsDB';
     //connect mongoose to db
-    mongoose.connect(url,{useMongoClient:true});
+    mongoose.connect('mongodb://maykhattar:Moon13468mlab@ds129003.mlab.com:29003/yelpcamp',{useMongoClient:true});
     
 //ROUTES
 app.get("/",function(req,res){
