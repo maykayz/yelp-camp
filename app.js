@@ -17,25 +17,10 @@ var express         = require("express"),
 //    seedDB();
 
 //DATABASE SETUP
-var options = { 
-  server: { 
-    socketOptions: { 
-      keepAlive: 300000, connectTimeoutMS: 30000 
-    } 
-  }, 
-  replset: { 
-    socketOptions: { 
-      keepAlive: 300000, 
-      connectTimeoutMS : 30000 
-    } 
-  } 
-};
 if(process.env.DATABASEURL) {
-  mongoose.connect(process.env.DATABASEURL, options);
+  mongoose.connect(process.env.DATABASEURL);
 } else {
-
   mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
-
 }
 //'mongodb://localhost/campDB' || 
 //    var url = process.env.DATABASEURL || 'mongodb://localhost/campgroundsDB';
