@@ -34,7 +34,7 @@ if(process.env.DATABASEURL) {
   mongoose.connect(process.env.DATABASEURL, options);
 } else {
 
-  // Connect to local database
+  mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
 
 }
 //'mongodb://localhost/campDB' || 
