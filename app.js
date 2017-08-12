@@ -17,7 +17,7 @@ var express         = require("express"),
 //    seedDB();
 
 //DATABASE SETUP
-    var url = process.env.DATABASEURL || 'mongodb://localhost/campgroundsDB';
+    var url = process.env.DATABASEURL;
 //    var url = process.env.DATABASEURL || 'mongodb://localhost/campDB';
     //connect mongoose to db
     mongoose.connect(url,{useMongoClient:true});
