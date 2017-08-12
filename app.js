@@ -1,36 +1,32 @@
 //SETUP
-var express    = require("express"),
-    app        = express(),
-    bodyParser = require("body-parser"),
-    mongoose = require("mongoose");
-var methodOverride = require("method-override");
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require("body-parser"),
+    mongoose        = require("mongoose"),
+    Campground      = require('./models/campground'),
+    methodOverride  = require("method-override"),
+    seedDB          = require("./seeds"),
+    Comment         = require("./models/comment"),
+    moment          = require("moment");
+
+
     app.use(methodOverride("_method"));
-    //set view engine to ejs
     app.set("view engine","ejs");
-    //use bodyParser
     app.use(bodyParser.urlencoded({extended:true}));
-    //add css folder
     app.use(express.static("public"));
+//    seedDB();
 
 //DATABASE SETUP
+    var url = process.env.DATABASEURL || 'mongodb://localhost/campgroundsDB';
+//    var url = process.env.DATABASEURL || 'mongodb://localhost/campDB';
     //connect mongoose to db
-//    mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
-        mongoose.connect('mongodb://maykhattar:Mkt13468@ds129003.mlab.com:29003/yelpcamp',{useMongoClient:true});
-
-    //create schema
-    var campgroundSchema = new mongoose.Schema({
-        name:String,
-        image:String,
-        desc:String
-    });
-    //compilte schema to model
-    var Campground = mongoose.model("Campground",campgroundSchema);
+    mongoose.connect(url,{useMongoClient:true});
     
-
 //ROUTES
 app.get("/",function(req,res){
     res.render("landing");
 });
+// ---------CAMPGROUND ROUTES--------- //
 //INDEX
 app.get("/campgrounds",function(req,res){
     //retrieve campgrounds from database
@@ -71,12 +67,12 @@ app.get("/campgrounds/new",function(req,res){
 //SHOW
 app.get("/campgrounds/:id",function(req,res){
     var id = req.params.id;
-    Campground.findById(id,function(err,campground){
+    Campground.findById(id).populate("comments").exec(function(err,campground){
         if(err){
             console.log(err);
             res.redirect("/campgrounds");
         }else{
-            res.render("show",{campground:campground});
+            res.render("show",{campground:campground,moment:moment});
             console.log("Show");
         }
     });
@@ -94,10 +90,43 @@ app.delete("/campgrounds/:id",function(req,res){
             res.redirect("/campgrounds");
         }
     });
-    
+});
+// ---------------------------------- //
+// ----------COMMENT ROUTES---------- //
+// adding comment
+app.post("/campgrounds/:id/comments",function(req,res){
+    var cuser = "Kenny";
+    var ctext = req.body.commenttext;
+    Campground.findById(req.params.id).populate("comments").exec(function(err,campground){
+        if(err){
+            console.log(err);
+        }else{
+            Comment.create({
+                user    : cuser,
+                text    : ctext,
+                time    : moment()
+            },function(err,createdComment){
+                if(err){
+                    console.log(err);
+                }else{
+                    campground.comments.push(createdComment);
+                    campground.save(function(err,savedCamp){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            res.redirect("/campgrounds/"+campground._id);
+                        }
+                    });
+                }
+            })
+        }
+    });
+
 });
 
+// ---------------------------------- //
 //LISTEN
 app.listen(process.env.PORT || 3000,function(){
     console.log("Yelp Camp has started");
 });
+

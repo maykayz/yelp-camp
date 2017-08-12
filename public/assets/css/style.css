@@ -27,7 +27,6 @@ body{
 }
 .card .card-title a{
     color:#212121 !important;
-    
 }
 .card-content p{
     font-family: 'Playfair Display', serif;
@@ -83,4 +82,7 @@ a{
 }
 .gap{
     margin:50px;
+}
+.timestamp{
+    color:#757575;
 }

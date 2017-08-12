@@ -1,7 +1,9 @@
 <% include ./partials/header %>
+
+
     <div class="container campgroundContainer">
       <div class="row">
-        <div class="col xl8 l8 s12 xs12 offset-xl2 offset-l2">
+        <div class="col xl12 l12 s12 xs2 offset-xl0 offset-l0">
           <div class="card">
             <div class="card-image">
               <img src="<%=campground.image%>">
@@ -15,8 +17,31 @@
               <a onclick="deleteAlert()" href="#endPoint"><i class="trash icon"></i></a>
             </div>
           </div>
+                   <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">account_circle</i>
+                            <form action="/campgrounds/<%=campground._id%>/comments" method="POST" class="commentarea" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
+                                <input id="icon_prefix" type="text" class="validate" placeholder="Enter your comment..." name="commenttext">
+                            </form>
+                            
+                        </li>                   
+                    <!--  comment-->
+                     <% campground.comments.forEach(function(comment){ %>
+                        
+                            <li class="collection-item avatar">
+                              <img src="http://www.hexatar.com/gallery/thumb/151104_f3e74852d09.png" alt="" class="circle">
+                                <span class="title"><%= comment.user %></span>
+                              <p><%= comment.text %></br>
+                              <span class="timestamp"><%=moment(comment.time,"YYYYMMDD").fromNow(); %><span></p>
+                                 
+                
+                            </li>
+                     <% }) %>
+                    <!--  end of comment -->
+                   </ul>
         </div>
       </div>
+
       
 <!-- end point and message-->
       
