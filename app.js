@@ -17,10 +17,30 @@ var express         = require("express"),
 //    seedDB();
 
 //DATABASE SETUP
-    var url = process.env.DATABASEURL;
-//    var url = process.env.DATABASEURL || 'mongodb://localhost/campDB' || 'mongodb://localhost/campgroundsDB';
-    //connect mongoose to db
-    mongoose.connect(url,{useMongoClient:true});
+var options = { 
+  server: { 
+    socketOptions: { 
+      keepAlive: 300000, connectTimeoutMS: 30000 
+    } 
+  }, 
+  replset: { 
+    socketOptions: { 
+      keepAlive: 300000, 
+      connectTimeoutMS : 30000 
+    } 
+  } 
+};
+if(process.env.DATABASEURL) {
+  mongoose.connect(process.env.DATABASEURL, options);
+} else {
+
+  // Connect to local database
+
+}
+//'mongodb://localhost/campDB' || 
+//    var url = process.env.DATABASEURL || 'mongodb://localhost/campgroundsDB';
+//    //connect mongoose to db
+//    mongoose.connect(url,{useMongoClient:true});
     
 //ROUTES
 app.get("/",function(req,res){
@@ -36,6 +56,7 @@ app.get("/campgrounds",function(req,res){
             res.render("campgrounds");
         }else{
             res.render("campgrounds",{campgrounds:foundcampgrounds});
+            console.log("found campgrounds")
         }
     });
 
@@ -125,6 +146,7 @@ app.post("/campgrounds/:id/comments",function(req,res){
 });
 
 // ---------------------------------- //
+
 //LISTEN
 app.listen(process.env.PORT || 3000,function(){
     console.log("Yelp Camp has started");
