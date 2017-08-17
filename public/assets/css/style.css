@@ -43,7 +43,9 @@ body{
     font-family: 'Playfair Display', serif;
     text-align:justify;
 }
-
+.rating{
+    margin:10px 0;
+}
 .createNew{
     margin-bottom:100px;
 }
@@ -85,4 +87,36 @@ a{
 }
 .timestamp{
     color:#757575;
+}
+.row{
+    width:100%;
+}
+.profileChoose{
+    width:80px;
+    margin:0 auto;
+}
+.profileChoose a i{
+    font-size:80px;
+}
+.profileChoose label{
+    text-align:center;
+}
+.profileChoose a{
+    text-align:center;
+}
+.heading{
+    margin:20px auto;
+}
+#avatarRow{
+    width:640px;
+    margin: 0 auto;
+}
+.lastRow{
+        margin-bottom:100px;
+}
+.leftMargin50{
+    margin-left:50px;
+}
+.largoLogo i{
+    font-size:60px;
 }

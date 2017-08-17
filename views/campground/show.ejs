@@ -1,0 +1,84 @@
+<% include ../partials/header %>
+
+
+    <div class="campgroundContainer">
+      <div class="row">
+        <div class="col xl12">
+<!--         offset can remove specific grid if u want -->
+          <div class="card">
+            <div class="card-image">
+              <img src="<%=campground.image%>" class="materialboxed" width="100%">
+              <span class="card-title"><%=campground.name%></span>
+              
+            </div>
+            <div class="card-content">
+             <div class="ui heart rating right-align large" data-rating="1" data-max-rating="5"></div>
+              <p><%=campground.desc%></p>
+            </div>
+            <div class="card-action">
+              <a href="/campgrounds/<%=campground._id%>/edit"><i class="edit icon"></i></a>
+              <a onclick="deleteAlert()" href="#endPoint"><i class="trash icon"></i></a>
+              
+            </div>
+            
+          </div>
+                   <ul class="collection">
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle">account_circle</i>
+                            <form action="/campgrounds/<%=campground._id%>/comments" method="POST" class="commentarea" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
+                                <input id="icon_prefix" type="text" class="validate" placeholder="Enter your comment..." name="commenttext">
+                            </form>
+                            
+                        </li>                   
+                    <!--  comment-->
+                     <% campground.comments.forEach(function(comment){ %>
+                        
+                            <li class="collection-item avatar">
+                              <img src="http://www.hexatar.com/gallery/thumb/151104_f3e74852d09.png" alt="" class="circle">
+                                <span class="title"><%= comment.user %></span>
+                              <p><%= comment.text %></br>
+                              <span class="timestamp"><%=moment(comment.time,"YYYYMMDD").fromNow(); %><span></p>
+                                 
+                
+                            </li>
+                     <% }) %>
+                    <!--  end of comment -->
+                   </ul>
+        </div>
+      </div>
+
+      
+<!-- end point and message-->
+      
+       <div id="endpoint"></div>
+        <!-- Alert message-->
+        <div class="ui hidden message" id="deleteMessage">
+          <div class="ui grid">
+          
+              <div class="ten wide column">
+                <div class="header">
+                    You are deleting the post!
+                  </div>
+                  Are you sure you want to delete this post?
+              </div>
+              <div class="six wide column">
+                  <form action="/campgrounds/<%=campground._id%>?_method=DELETE" method="POST">
+                      <button class="ui negative button" type="submit">
+                          Delete
+                      </button>
+                      <a class="ui button" onclick="cancelAlert()">
+                          Cancel
+                      </a>
+                  </form>
+                
+              </div>
+          </div>
+        </div>
+<!-- end of end point -->
+    </div>        
+
+
+<!--CONTENT ENDS HERE-->
+<% include ../partials/footer %>
+
+

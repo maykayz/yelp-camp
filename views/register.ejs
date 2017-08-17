@@ -1,0 +1,119 @@
+<% include ./partials/header %>
+
+<!--Start here-->
+  
+  <h4 class="createNewHeading">Create your Yelpcamp Account</h4>
+  <div class="container">
+      <form action="/register" method="POST" class="createNew"> 
+            <div class="row">
+                <div class="profileChoose">
+                    <a id="avatarChoose" class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">account_circle</i></a>
+                    <label for="avatarChoose">Add Image</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                  <input name="username" id="username" type="text" class="validate">
+                  <label class="active" for="username">User Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                  <input id="email" type="email" name="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div> 
+          <div class="row">
+            <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+              <input id="password" type="password" name="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+        
+            <div class="row">
+             <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+              <button type="submit" class="waves-effect waves-light btn">Register</button>
+              </div>
+            </div>
+      </form>
+  </div>
+  
+    <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+           <h4 class="heading">Choose your avatar</h4>
+            <div class="row" id="avatarRow">
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/1.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/2.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/3.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/4.png">
+                     </div>
+                </div>
+            </div>
+            <div class="row" id="avatarRow">
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/5.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/6.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/7.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/8.png">
+                     </div>
+                </div>
+            </div>
+            <div class="row lastRow" id="avatarRow">
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/9.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/10.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/11.png">
+                     </div>
+                </div>
+                <div class="col xl3 l3 sm3 xs3">
+                     <div class="ui circular tiny images">
+                         <img class="ui image" src="/images/12.png">
+                     </div>
+                </div>
+            </div>
+            <div class="lastRow"></div>
+             
+               </div>
+
+          
+
+<!--Ends here-->
+
+
+<% include ./partials/footer %>

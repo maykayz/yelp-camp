@@ -21,12 +21,39 @@
             <div class="nav-wrapper teal">
               <a href="/" class="brand-logo"><i class="yelp icon"></i>Yelp Camp</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/campgrounds/new">Add New Campground</a></li>
-                <li><a href="/campgrounds">Campgrounds</a></li>
-                <li><a href="/account"><i class="large material-icons">account_circle</i></a></li>
+                  <li><a class="waves-effect waves-light modal-trigger largoLogo" href="#modal1"><span><i class="large material-icons">account_circle</i></span></a></li>
               </ul>
             </div>
           </nav>
+
+
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+           <h4 class="createNewHeading">Sign in to Yelp Camp</h4>
+            <form action="/login" method="POST" class="createNew"> 
+                        <div class="row">
+                            <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                              <input name="username" id="username" type="text" class="validate">
+                              <label class="active" for="username">User Name</label>
+                            </div>
+                        </div>
+                      <div class="row">
+                        <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                          <input name="password" id="password" type="password" class="validate">
+                          <label for="password">Password</label>
+                        </div>
+                      </div>
+                        <div class="row">
+                         <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                          <button type="submit" class="waves-effect waves-light btn">Log In</button>
+                             <a href="/register" class="leftMargin50">Don't have an account?</a>
+                          </div>
+                        </div>
+                  </form>
+          </div>
+
+          
+          
           
          <div class="container main">
          
@@ -37,7 +64,7 @@
             <h5 class="sub header gap">View our hand-picked campgrounds from all over the world.</h5>
         </h1>
 
-        <a class="waves-effect waves-light btn-large" id="landingBtn" href="/campgrounds">
+        <a class="waves-effect waves-light btn-large modal-trigger" id="landingBtn" modal-trigger" href="#modal1">
             View All Campgrounds
         </a>
     </div>   

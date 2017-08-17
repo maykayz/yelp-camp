@@ -13,8 +13,14 @@
     "body-parser": "^1.17.2",
     "ejs": "^2.5.7",
     "express": "^4.15.3",
+    "express-session": "^1.15.5",
+    "jQuery": "^1.7.4",
+    "jsdom": "^11.1.0",
     "method-override": "^2.3.9",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.5"
+    "mongoose": "^4.11.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.1.0"
   }
 }
