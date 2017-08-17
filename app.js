@@ -92,7 +92,7 @@ app.get("/campgrounds",isLoggedIn,function(req,res){
 
 });
 //CREATE
-//app.post("/campgrounds",isLoggedIn,function(req,res){
+app.post("/campgrounds",isLoggedIn,function(req,res){
     var campName = req.body.campName;
     var campLink = req.body.campLink;
     var campDesc = req.body.campDesc;
