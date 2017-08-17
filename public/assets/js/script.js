@@ -7,8 +7,6 @@ $(document).ready(function(){
     Materialize.updateTextFields();
     $('.slider').slider();
     $('.materialboxed').materialbox();
-
-
   });
 
 //$('#textarea1').val('New Text');
@@ -22,10 +20,6 @@ function deleteAlert(){
 function cancelAlert(){
     document.querySelector("#deleteMessage").classList.add("hidden");
 }
-
-
-
-
  $('.dropdown-button').dropdown({
       inDuration: 300,
       outDuration: 225,
@@ -50,6 +44,39 @@ $(document).ready(function(){
     });
   });
 
+//setting image link for profile pic
+//get avatar model
+var images = $(".avatarModal").find($("img"));
+images.each(function(){
+    var self = $(this);
+    self.on("click",function(){
+        var link = self.attr("src");
+        console.log(link);
+        $("#registerPic").val(link);
+        $('.modal').modal('close');
+        var avatarchoose = $("#avatarChoose");
+        var icon = avatarchoose.find("i");
+        icon.remove();
+        var currentimgs = avatarchoose.find($('img'));
+        if(currentimgs.length > 0){
+            currentimgs.each(function(){
+                $(this).remove();
+            });
+           }
+        var newImage= '<img class="ui medium circular image" src="'+link+'">';
+            avatarchoose.append(newImage);
+    } );
+});
+// get rows 
+
+//get each button
+
+
+// click button 
+
+// if button 1 --> ../../public/images/1.png
+
+//set value of form input image
 
 
 

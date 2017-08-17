@@ -32,9 +32,9 @@
                         </li>                   
                     <!--  comment-->
                      <% campground.comments.forEach(function(comment){ %>
-                        
+                            <% if(comment.pic){ pic = comment.pic }else{pic="/images/5.png"} %>
                             <li class="collection-item avatar">
-                              <img src="http://www.hexatar.com/gallery/thumb/151104_f3e74852d09.png" alt="" class="circle">
+                              <img src="<%=pic%>" alt="" class="circle">
                                 <span class="title"><%= comment.user %></span>
                               <p><%= comment.text %></br>
                               <span class="timestamp"><%=moment(comment.time,"YYYYMMDD").fromNow(); %><span></p>

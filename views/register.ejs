@@ -4,11 +4,12 @@
   
   <h4 class="createNewHeading">Create your Yelpcamp Account</h4>
   <div class="container">
-      <form action="/register" method="POST" class="createNew"> 
+      <form action="/register" method="POST" class="createNew" id="registerForm"> 
             <div class="row">
                 <div class="profileChoose">
                     <a id="avatarChoose" class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">account_circle</i></a>
-                    <label for="avatarChoose">Add Image</label>
+                    <input type="hidden" id="registerPic" name="profilepic">
+<!--                    <label for="avatarChoose">Add Image</label>-->
                 </div>
             </div>
             <div class="row">
@@ -39,7 +40,7 @@
   </div>
   
     <!-- Modal Structure -->
-          <div id="modal1" class="modal">
+          <div id="modal1" class="modal avatarModal">
            <h4 class="heading">Choose your avatar</h4>
             <div class="row" id="avatarRow">
                 <div class="col xl3 l3 sm3 xs3">

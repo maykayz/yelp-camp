@@ -16,21 +16,41 @@
  <body>
           <!-- jQuery is required -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          
+         <% var isLoggedIn = false,name = "",pic="" %>
+         <% if(currentUser){ isLoggedIn = true; %> 
+          <% name = currentUser.username; %>
+           <% pic = currentUser.profilepic; %>
+         <%  }%>
            <nav>
             <div class="nav-wrapper teal">
               <a href="/" class="brand-logo"><i class="yelp icon"></i>Yelp Camp</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
+               <% if(isLoggedIn){ %>
                 <li><a href="/campgrounds/new">Add New Campground</a></li>
                 <li><a href="/campgrounds">Campgrounds</a></li>
-                <li><a href="#" class='dropdown-button largoLogo' data-activates='dropdown1' data-beloworigin="true" ><i class="large material-icons">account_circle</i></a></li>
-                 <li><ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="/login"><i class="sign in icon"></i>Sign In</a></li>
-                    <li><a href="/register"><i class="add user icon"></i>Sign Up</a></li>
-                    <li><a href="/logout"><i class="sign out icon"></i>Logout</a></li>
-                    <li><img id="profileLogo"></li>
-                  </ul></li>
-                  <!-- Dropdown Structure -->
+                <% } %>
+                <li>
+                <a href="#" class='dropdown-button largoLogo' id="circularBtn" data-activates='dropdown1' data-beloworigin="true" >
+                    <% if(!isLoggedIn) { %>
+                    <i class="large material-icons">account_circle</i>
+                    <% }else{ %>
+                    <span><img class="ui mini circular image" id="circularImg" src="<%=pic%>"></span>
+                    <% } %>
+                </a></li>
+
+                 <li>
+                    <ul id='dropdown1' class='dropdown-content'>
+                    <% if(isLoggedIn){ %>
+                     <li><a href="#"><i class="user icon"></i><%=name%></a></li>
+                    <li><a href="/logout"><i class="sign out icon"></i>Log Out</a></li>
+                    <% }else{ %>
+                    <li><a href="/"><i class="sign in icon"></i>Log In</a></li>
+                    <% } %>
+                  </ul>
+                </li>
+                
+                         
+                 <!-- Dropdown Structure -->
                   
  
               </ul>

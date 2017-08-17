@@ -120,3 +120,24 @@ a{
 .largoLogo i{
     font-size:60px;
 }
+#circularBtn{
+    position:relative;
+    top:0;
+    margin:0;
+    height:65px;
+}
+#circularImg{
+    padding:15px 0;
+    line-height: 65px;
+}
+.dropdown-content{
+    width:200px;
+}
+.circular{
+    border-radius:20px;
+}
+.circular .image:hover{
+    -webkit-box-shadow: 14px 19px 40px -18px rgba(0,0,0,0.53);
+-moz-box-shadow: 14px 19px 40px -18px rgba(0,0,0,0.53);
+box-shadow: 14px 19px 40px -18px rgba(0,0,0,0.53);
+}

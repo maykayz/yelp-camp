@@ -50,11 +50,11 @@ app.post("/login",passport.authenticate("local",{
 );
 //register get
 app.get("/register",function(req,res){
-    res.render("register");
+    res.render("register",{currentUser:null});
 });
 //register post
 app.post("/register",function(req,res){
-    User.register(new User({username:req.body.username,email:req.body.email,profilepic:"../../public/images/1.png"}),
+    User.register(new User({username:req.body.username,email:req.body.email,profilepic:req.body.profilepic}),
                   req.body.password,function(err,user){
                         if(err){
                             console.log(err);
@@ -85,8 +85,7 @@ app.get("/campgrounds",isLoggedIn,function(req,res){
             console.log(err);
             res.render("campground/campgrounds");
         }else{
-            res.render("campground/campgrounds",{campgrounds:foundcampgrounds});
-            console.log("found campgrounds")
+            res.render("campground/campgrounds",{campgrounds:foundcampgrounds,currentUser:req.user});
         }
     });
 
@@ -114,7 +113,7 @@ app.post("/campgrounds",isLoggedIn,function(req,res){
 });
 //NEW
 app.get("/campgrounds/new",isLoggedIn,function(req,res){
-    res.render("campground/createNew");
+    res.render("campground/createNew",{currentUser:req.user});
 });
 //SHOW
 app.get("/campgrounds/:id",isLoggedIn,function(req,res){
@@ -124,8 +123,7 @@ app.get("/campgrounds/:id",isLoggedIn,function(req,res){
             console.log(err);
             res.redirect("/campgrounds");
         }else{
-            res.render("campground/show",{campground:campground,moment:moment});
-            console.log("Show");
+            res.render("campground/show",{campground:campground,moment:moment,currentUser:req.user});
         }
     });
 });
@@ -159,22 +157,24 @@ app.put("/campgrounds/:id",isLoggedIn,function(req,res){
 //    });
 });
 app.get("/campgrounds/:id/edit",isLoggedIn,function(req,res){
-    res.render("edit");
+    res.render("edit",{currentUser:req.user});
 });
 // ---------------------------------- //
 // ----------COMMENT ROUTES---------- //
 // adding comment
 app.post("/campgrounds/:id/comments",isLoggedIn,function(req,res){
-    var cuser = "Kenny";
+    var user = req.user;
     var ctext = req.body.commenttext;
     Campground.findById(req.params.id).populate("comments").exec(function(err,campground){
         if(err){
             console.log(err);
         }else{
             Comment.create({
-                user    : cuser,
+                user    : user.username,
                 text    : ctext,
-                time    : moment()
+                time    : moment(),
+                pic     : user.profilepic
+                
             },function(err,createdComment){
                 if(err){
                     console.log(err);
