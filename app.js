@@ -35,11 +35,11 @@ var express         = require("express"),
 //=================================//
 
 //DATABASE SETUP
-//if(process.env.DATABASEURL) {
-//  mongoose.connect(process.env.DATABASEURL,{useMongoClient:true});
-//} else {
+if(process.env.DATABASEURL) {
+  mongoose.connect(process.env.DATABASEURL,{useMongoClient:true});
+} else {
   mongoose.connect('mongodb://localhost/campgroundsDB',{useMongoClient:true});
-//}
+}
 
 //=============AUTHENTICATION ROUTES====================//
 //login post
@@ -92,7 +92,7 @@ app.get("/campgrounds",isLoggedIn,function(req,res){
 
 });
 //CREATE
-app.post("/campgrounds",isLoggedIn,function(req,res){
+//app.post("/campgrounds",isLoggedIn,function(req,res){
     var campName = req.body.campName;
     var campLink = req.body.campLink;
     var campDesc = req.body.campDesc;
