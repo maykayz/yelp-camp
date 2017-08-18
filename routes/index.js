@@ -13,8 +13,10 @@ router.get("/",function(req,res){
 //=============AUTHENTICATION ROUTES====================//
 //Login 
 router.post("/login",passport.authenticate("local",{
+    successFlash: 'Welcome to Yelp Camp!',
     successRedirect :   "/campgrounds",
-    failureRedirect :   "/"
+    failureFlash: 'Invalid username or password.',
+    failureRedirect :   "/",
     })
 );
 //Get Register Page
@@ -27,7 +29,7 @@ router.post("/register",function(req,res){
                   req.body.password,function(err,user){
                         if(err){
                             console.log(err);
-                            req.flash("error","Registration Failed!");
+                            req.flash("error",err.message);
                             return res.redirect("/register");
                         }
                             passport.authenticate("local")(req,res,function(){
