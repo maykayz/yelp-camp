@@ -12,8 +12,10 @@
               
             </div>
             <div class="card-content">
+            <% var author = "MayK"; %>
+            <% if(campground.author.username){ author = campground.author.username; } %>
              <div class="ui heart rating right-align large" data-rating="1" data-max-rating="5"></div>
-                <div class="ui sub header">Posted By <%=campground.author.username%></div></br>
+                <div class="ui sub header">Posted By <%=author%></div></br>
               <p><%=campground.desc%></p>
             </div>
             
