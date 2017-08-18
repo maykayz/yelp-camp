@@ -98,8 +98,11 @@ a{
 .profileChoose a i{
     font-size:80px;
 }
-.profileChoose label{
+#profileChooselabel{
+    width:80px;
     text-align:center;
+    margin:0 auto;
+    color:#004d40;
 }
 .profileChoose a{
     text-align:center;
