@@ -7,6 +7,7 @@ $(document).ready(function(){
     Materialize.updateTextFields();
     $('.slider').slider();
     $('.materialboxed').materialbox();
+    $(".button-collapse").sideNav();
   });
 
 //$('#textarea1').val('New Text');

@@ -145,3 +145,7 @@ box-shadow: 14px 19px 40px -18px rgba(0,0,0,0.53);
     background:none;
     border:none;
 }
+li .center{
+    margin:0 auto;
+    text-align:center;
+}
