@@ -52,19 +52,39 @@
                   </form>
           </div>
 
-          
-          
-          
+
+
          <div class="container main">
-         
-<div class="landingBody">
+<!--  flash message        -->
+            <% if(success && success.length >0){ %>
+                <div class="ui positive message">
+                  <i class="close icon"></i>
+                      <div class="header">
+                        Success
+                      </div>
+                  <p><%=success%></p>
+                </div>
+            <% } %> 
+            <% if(error && error.length >0){ %>
+                <div class="ui negative message">
+                      <i class="close icon"></i>
+                          <div class="header">
+                            Oops
+                          </div>
+                      <p><%=error%></p>
+                </div>  
+            <% } %>     
+<!--  flash message end       -->            
+            
+<div class="landingBody main">
+
      <div class="ui center aligned container">
         <h1 class="ui center aligned header">
             Welcome to Yelp Camp!
             <h5 class="sub header gap">View our hand-picked campgrounds from all over the world.</h5>
         </h1>
 
-        <a class="waves-effect waves-light btn-large modal-trigger" id="landingBtn" modal-trigger" href="#modal1">
+        <a class="waves-effect waves-light btn-large modal-trigger" id="landingBtn" modal-trigger" href="/campgrounds">
             View All Campgrounds
         </a>
     </div>   

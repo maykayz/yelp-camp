@@ -13,14 +13,18 @@
             </div>
             <div class="card-content">
              <div class="ui heart rating right-align large" data-rating="1" data-max-rating="5"></div>
+                <div class="ui sub header">Posted By <%=campground.author.username%></div></br>
               <p><%=campground.desc%></p>
             </div>
+            
+<!--            if camp is created by current user, shows this-->
+
+               <% if(currentUser._id.equals(campground.author.id)){%>
             <div class="card-action">
               <a href="/campgrounds/<%=campground._id%>/edit"><i class="edit icon"></i></a>
-              <a onclick="deleteAlert()" href="#endPoint"><i class="trash icon"></i></a>
-              
+              <a onclick="deleteAlert()" href="#endPoint"><i class="trash icon"></i></a> 
             </div>
-            
+                <% } %>
           </div>
                    <ul class="collection">
                         <li class="collection-item avatar">
@@ -32,14 +36,21 @@
                         </li>                   
                     <!--  comment-->
                      <% campground.comments.forEach(function(comment){ %>
-                            <% if(comment.pic){ pic = comment.pic }else{pic="/images/5.png"} %>
+                            <% if(comment.author.profilepic){ pic = comment.author.profilepic; }else{pic="/images/5.png";} %>
                             <li class="collection-item avatar">
                               <img src="<%=pic%>" alt="" class="circle">
-                                <span class="title"><%= comment.user %></span>
+                                <span class="title"><%= comment.author.username %></span>
                               <p><%= comment.text %></br>
-                              <span class="timestamp"><%=moment(comment.time,"YYYYMMDD").fromNow(); %><span></p>
-                                 
-                
+                              <span class="timestamp"><%=moment(comment.time,"YYYYMMDD").fromNow(); %><span></p> 
+                               <% if(currentUser._id.equals(comment.author.id)){%>  
+                                    <div class="secondary-content">
+<!--                                        <a href="#"><i class="edit icon"></i></a>-->
+                                            <form action="/campgrounds/<%=campground._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                                <button class="linkBtn"><i class="trash icon"></i></button>  
+                                            </form>
+                                         
+                                    </div>   
+                                <% } %>     
                             </li>
                      <% }) %>
                     <!--  end of comment -->

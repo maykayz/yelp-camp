@@ -141,3 +141,7 @@ a{
 -moz-box-shadow: 14px 19px 40px -18px rgba(0,0,0,0.53);
 box-shadow: 14px 19px 40px -18px rgba(0,0,0,0.53);
 }
+.linkBtn{
+    background:none;
+    border:none;
+}

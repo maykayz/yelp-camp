@@ -44,7 +44,7 @@
                      <li><a href="#"><i class="user icon"></i><%=name%></a></li>
                     <li><a href="/logout"><i class="sign out icon"></i>Log Out</a></li>
                     <% }else{ %>
-                    <li><a href="/"><i class="sign in icon"></i>Log In</a></li>
+                    <li><a href="#modal1" class="modal-trigger"><i class="sign in icon"></i>Log In</a></li>
                     <% } %>
                   </ul>
                 </li>
@@ -56,5 +56,24 @@
               </ul>
             </div>
           </nav>
-          
-         <div class="container main">
+          <div class="container main">
+<!--  flash message        -->
+            <% if(success && success.length >0){ %>
+                <div class="ui positive message">
+                  <i class="close icon"></i>
+                      <div class="header">
+                        Success
+                      </div>
+                  <p><%=success%></p>
+                </div>
+            <% } %> 
+            <% if(error && error.length >0){ %>
+                <div class="ui negative message">
+                      <i class="close icon"></i>
+                          <div class="header">
+                            Oops
+                          </div>
+                      <p><%=error%></p>
+                </div>  
+            <% } %>  
+<!--  flash message end       -->    

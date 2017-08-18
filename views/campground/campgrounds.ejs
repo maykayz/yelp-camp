@@ -3,6 +3,38 @@
 <!--CONTENT STARTS HERE-->
 
     <div class="campgroundContainer main">
+          
+          
+                    <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+           <h4 class="createNewHeading">Sign in to Yelp Camp</h4>
+            <form action="/login" method="POST" class="createNew"> 
+                        <div class="row">
+                            <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                              <input name="username" id="username" type="text" class="validate">
+                              <label class="active" for="username">User Name</label>
+                            </div>
+                        </div>
+                      <div class="row">
+                        <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                          <input name="password" id="password" type="password" class="validate">
+                          <label for="password">Password</label>
+                        </div>
+                      </div>
+                        <div class="row">
+                         <div class="input-field col s12 s12 xl6 l6 offset-xl3 offset-l3">
+                          <button type="submit" class="waves-effect waves-light btn">Log In</button>
+                             <a href="/register" class="leftMargin50">Don't have an account?</a>
+                          </div>
+                        </div>
+                  </form>
+          </div>
+          
+          
+          
+          
+          
+          
            <div class="row">
             <% campgrounds.forEach(function(camp){ %>
                 <div class="col xs12 s12 m6 l4 xl4">

@@ -11,7 +11,14 @@ $(document).ready(function(){
 
 //$('#textarea1').val('New Text');
 $('#textarea1').trigger('autoresize');
-
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
 function deleteAlert(){
     window.location.hash = "";
     document.querySelector("#deleteMessage").classList.remove("hidden");

@@ -1,0 +1,36 @@
+<% include ../partials/header %>
+
+
+  <!--Start here-->
+  
+  <h4 class="createNewHeading">Update Campground</h4>
+  <div class="container">
+      <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" class="createNew"> 
+            <div class="row">
+                <div class="input-field col s12">
+                  <input name="campName" id="campName" type="text" class="validate" data-length="27" value="<%=campground.name%>">
+                  <label class="active" for="campName">Campground Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input name="campLink" id="img" type="text" class="validate" value="<%=campground.image%>">
+                  <label class="active" for="img">Image Link</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                      <textarea id="textarea1" class="materialize-textarea" name="campDesc"><%=campground.desc%></textarea>
+                      <label for="textarea1">Description (click down arrow in the text to see more...)</label>
+                </div>
+            </div>          
+            <div class="row">
+              <button type="submit" class="waves-effect waves-light btn">Update</button>
+            </div>
+      </form>
+  </div>
+
+<!--Ends here-->
+
+       
+<% include ../partials/footer %>
