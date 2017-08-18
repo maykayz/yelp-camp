@@ -19,7 +19,7 @@
          <% var isLoggedIn = false,name = "",pic="" %>
          <% if(currentUser){ isLoggedIn = true; %> 
           <% name = currentUser.username; %>
-           <% pic = currentUser.profilepic; %>
+              <% if(currentUser.profilepic){ pic = currentUser.profilepic; }else{pic="/images/5.png";} %>
          <%  }%>
            <nav>
             <div class="nav-wrapper teal">
